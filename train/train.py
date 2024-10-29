@@ -134,8 +134,11 @@ def train(args, logger):
     if args.precomp_lang_embed:
         tokenizer, text_encoder = None, None
     else:
-        text_embedder = T5Embedder(from_pretrained=args.pretrained_text_encoder_name_or_path, 
-                                model_max_length=config["dataset"]["tokenizer_max_length"], device=accelerator.device)
+        text_embedder = T5Embedder(
+            from_pretrained=args.pretrained_text_encoder_name_or_path,
+            model_max_length=config["dataset"]["tokenizer_max_length"],
+            device=accelerator.device
+        )
         tokenizer, text_encoder = text_embedder.tokenizer, text_embedder.model
 
     vision_encoder = SiglipVisionTower(vision_tower=args.pretrained_vision_encoder_name_or_path, args=None)

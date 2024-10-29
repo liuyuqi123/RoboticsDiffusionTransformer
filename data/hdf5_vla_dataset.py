@@ -16,11 +16,15 @@ class HDF5VLADataset:
     stored in HDF5.
     """
     def __init__(self) -> None:
-        # [Modify] The path to the HDF5 dataset directory
-        # Each HDF5 file contains one episode
-        HDF5_DIR = "data/datasets/agilex/rdt_data/"
-        self.DATASET_NAME = "agilex"
-        
+        # # [Modify] The path to the HDF5 dataset directory
+        # # Each HDF5 file contains one episode
+        # HDF5_DIR = "data/datasets/agilex/rdt_data/"
+        # self.DATASET_NAME = "agilex"
+
+        # use the toy dataset for debugging
+        HDF5_DIR = "data/datasets/rdt/rdt_toy_dataset/"
+        self.DATASET_NAME = "rdt_toy"
+
         self.file_paths = []
         for root, _, files in os.walk(HDF5_DIR):
             for filename in fnmatch.filter(files, '*.hdf5'):
